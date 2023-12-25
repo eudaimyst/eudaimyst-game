@@ -1,7 +1,9 @@
 //import * as PIXI from "pixi.js"; //requires accessing PIXI. (for dev/learning)
 import { Application, Text, Texture, Sprite, Color, Container } from "pixi.js"; //allows accessing directly, better performance
+
 import { Button } from "@pixi/ui";
 
+import {default as Camera} from "./world/camera.js"
 import * as Debug from "./debug.js";
 
 let gameCanvas = null;
@@ -46,6 +48,9 @@ export const Init = (w, h, b) => {
     }
     Debug.Register(debugHandler); //to access game from debug module
 
+
+    const cam = new Camera;
+    console.log(cam)
     //#region background
 
     //const background = new Sprite(Texture.WHITE);
