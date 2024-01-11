@@ -8,9 +8,10 @@ const canvasBgColor = '#3b6697';
 const debugDivHeight = 200;
 const game = new App(window.innerWidth, window.innerHeight - debugDivHeight, canvasBgColor);
 
+document.body.innerHTML = '';
 document.body.style.margin = '0px';
 document.body.style.backgroundColor = siteBgColor;
 document.body.appendChild(game.view);
 document.body.appendChild(Debug());
 
-game.AddBunny();
+//game.AddBunny();

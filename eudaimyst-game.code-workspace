@@ -7,9 +7,9 @@
 			"path": "../eudaimyst-game-server"
 		}
 	],
-	
 
 	"settings": {
-		"docwriter.progress.trackFunctions": false
+		"docwriter.progress.trackFunctions": false,
+		"editor.detectIndentation": false
 	}
 }

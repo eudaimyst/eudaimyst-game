@@ -4,6 +4,7 @@ export default class GameObject extends Container {
 	world;
 	sprite;
 	worldPosition;
+	id;
 
 	/**
 	 * Extends Container including worldPosition Transform,
@@ -34,15 +35,40 @@ export default class GameObject extends Container {
 		this.UpdatePos();
 	};
 
-	UpdatePos = () => {
-		this.position.set(this.worldPosition.x-this.world.GetCamPosOffset().x, this.worldPosition.y-this.world.GetCamPosOffset().y);
+	SetID = (id) => {
+		this.id = id;
 	};
 
-	Move = (x, y) => {
-		this.SetWorldPos(this.worldPosition.x + x, this.worldPosition.y + y);
+	GetID = () => {
+		return this.id;
+	};
+
+	UpdatePos = () => {
+		this.position.set(
+			this.worldPosition.x - this.world.GetCamPosOffset().x,
+			this.worldPosition.y - this.world.GetCamPosOffset().y
+		);
+	};
+
+	ReplicateMoveBy(x, y) {
+		console.log('replicating to: ', x, y);
+		this.SetWorldPos(x, y);
+		this.UpdatePos();
+	}
+
+	MoveBy = (x, y, socket) => {
+		if (socket) {
+			console.log('sending server update for ', this.id, x, y);
+			socket.emit('game object update', this.id, x, y);
+		}
+	};
+
+	MoveTo = (x, y) => {
+		this.SetWorldPos(x, y);
 	};
 
 	Tick = (delta) => {
+		console.log('updating', this.id);
 		this.UpdatePos();
 	};
 }

@@ -1,4 +1,5 @@
 import { Transform } from 'pixi.js';
+import * as Debug from '../debug.js';
 
 /**
  *
@@ -11,7 +12,7 @@ export default class Camera extends Transform {
 	objectTarget;
 	width;
 	height;
-	
+
 	constructor(x, y) {
 		super();
 		//this.width = w; this.height = h;
@@ -29,13 +30,14 @@ export default class Camera extends Transform {
 	}
 
 	MoveBy(x, y) {
-		this.position.set(this.position.x+x, this.position.y+y);
+		this.position.set(Math.round(this.position.x + x), Math.round(this.position.y + y));
 	}
 	MoveTo(x, y) {
-		this.position.set(x, y);
+		this.position.set(Math.round(x), Math.round(y));
 	}
 
 	Tick() {
 		if (this.objectTarget) this.MoveTo(this.objectTarget.worldPosition.x, this.objectTarget.worldPosition.y);
+		Debug.Log(this.position.x + ',' + this.position.y);
 	}
 }

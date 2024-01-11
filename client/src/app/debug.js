@@ -9,7 +9,6 @@ export const RegisterGame = (app) => {
 };
 
 const addButton = (text, callback) => {
-
 	button = document.createElement('button');
 	button.onclick = () => {
 		//console.log(game)
@@ -17,8 +16,8 @@ const addButton = (text, callback) => {
 	};
 	button.innerHTML = text;
 
-	return button
-}
+	return button;
+};
 
 export const Debug = () => {
 	div = document.createElement('div');
@@ -30,6 +29,7 @@ export const Debug = () => {
 	div.appendChild(document.createElement('br'));
 	div.appendChild(addButton('Disconnect', game.Disconnect));
 	div.appendChild(addButton('Reconnect', game.Reconnect));
+	div.appendChild(addButton('ClearDB', game.ClearDB));
 	return div;
 };
 
